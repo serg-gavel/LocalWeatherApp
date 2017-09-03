@@ -1,5 +1,6 @@
 ## LocalWeatherApp
 #### First look
+###### Repository created 03/09/2017
 
 ![alt-текст](https://github.com/serg-gavel/LocalWeatherApp/blob/master/LocalWeatherApp-S.Gavelyuk.jpg)
 ##### (FreeCodeCamp project)
