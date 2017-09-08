@@ -1,29 +1,13 @@
+// /****************************************************************************************************************************
+//  Sergey Gavelyuk "FCC Local Weather App" Project / 24,08,2017 / more details here: serg-gavel.github.io/projects/ShowTheLocalWeather/
+//  *****************************************************************************************************************************/
 $(document).ready(function(){
-////////////////////////////  IP-API   /////////////////////////////////////////////////////////////////////////////////
     $.getJSON("https://ipapi.co/json/", function(data) {
         console.log(data);
         $('.city-p').append('Location : ' + data.city + ", " + data.country);
         showLocation(data);
-    });////////////////////////////  IP-API END   //////////////////////////////////////////////////////////////////////
+    });
 });
-///////https ipapi.com/////
-// $.getJSON("https://ipapi.co/json/", function(data) {
-//     console.log(data);
-//     $('.city-p').append('Location : ' + data.city + ", " + data.country);
-//     showLocation(data);
-// });
-////////////////////////////  IP-API END   //////////////////////////////////////////////////////////////////////
-// $.getJSON("http://ip-api.com/json/?callback=?", function(data) {
-//     $('.city-p').append('Location : ' + data.city + ", " + data.countryCode);
-//     showLocation(data);
-// });////////////////////////////  IP-API END   //////////////////////////////////////////////////////////////////////
-
-
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////  SHOW WEATHER FUNCTION  ///////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function showWeather(data) {
     $.getJSON("https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22"+data.city+"%2C%20"+data.countryCode+"%22)and%20u%3D'c'&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys", function(data) {
         $('.temp-p').append("Temperature: "+data.query.results.channel.item.condition.temp +" &deg;C");
@@ -84,7 +68,6 @@ function showWeather(data) {
                     break;
                 default: console.log(text);
             }
-///////////////////////////////////CELSIUS TO FAHRENHEIT////////////////////////////////////////////////////////////////
         var toggleUnit = false;
         var currentCelsius = data.query.results.channel.item.condition.temp;
         function convertToF(celsius) {
@@ -106,12 +89,9 @@ function showWeather(data) {
                     p.append('Temperature: '+ currentCelsius+' &deg;C');
                     toggleUnit = false;
                 }
-        });///////////////////////////////END CELSIUS TO FAHRENHEIT/////////////////////////////////////////////////////
+        });
     });
-}///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////  SHOW WEATHER FUNCTION END/////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+}
 function showLocation(data) {
 showWeather(data);
 }
-
