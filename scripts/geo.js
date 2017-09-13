@@ -1,10 +1,7 @@
-// /****************************************************************************************************************************
-//  Sergey Gavelyuk "FCC Local Weather App" Project / 24,08,2017 / more details here: serg-gavel.github.io/projects/ShowTheLocalWeather/
-//  *****************************************************************************************************************************/
 $(document).ready(function(){
-    $.getJSON("https://ipapi.co/json/", function(data) {
+    $.getJSON("https://freegeoip.net/json/", function(data) {
         console.log(data);
-        $('.city-p').append('Location : ' + data.city + ", " + data.country);
+        $('.city-p').append('Location : ' + data.city + ", " + data.country_code);
         showLocation(data);
     });
 });
@@ -95,3 +92,4 @@ function showWeather(data) {
 function showLocation(data) {
 showWeather(data);
 }
+
